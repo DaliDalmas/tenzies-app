@@ -21,16 +21,11 @@ export default function App(){
         play: true
     })
 
-    const [rollsData, setRollsData] = React.useState({
-        count: 0,
-        data:[]
-    })
+    const [rollCount, setRollCount] = React.useState(1)
 
     function roll(){
 
-        setRollsData(oldRollsData=>{
-            return {...oldRollsData, count: oldRollsData.count+1}
-        })
+        setRollCount(oldRollCount=>oldRollCount+1)
 
         setGame(oldGame=>{
             return {...oldGame, play: true}
@@ -51,14 +46,11 @@ export default function App(){
             if (game.selectedNumber===value||game.selectedNumber===0){
                 setDiceRolls(prevDiceRolls=>{
                     return prevDiceRolls.map(diceRoll=>{
-                        return diceRoll.position==position? {...diceRoll, locked:true}: diceRoll
+                        return diceRoll.position===position? {...diceRoll, locked:true}: diceRoll
                     })
                 })
 
-                setRollsData(oldRollsData=>{
-                    return {...oldRollsData, data: [...oldRollsData.data, {onCount:diceRolls.count, flippedInstance: diceRolls}]}
-                })
-            console.log(rollsData)
+                
             }
                 
 
