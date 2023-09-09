@@ -18,7 +18,7 @@ html{
 .app{
   background-color: white;
   width: 350px;
-  height: 350px;
+  height: 380px;
   align-self: center;
   border-radius: 10px;
   padding: 55px;
@@ -70,3 +70,13 @@ html{
   border-radius: 7%;
 }
 
+.roll-count{
+  background-color: rgb(94, 9, 131);
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16.384px;
+  font-weight: 700;
+  margin-top: 20px;
+  border-radius: 4%;
+  color: white;
+}
