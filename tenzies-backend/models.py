@@ -10,7 +10,6 @@ class RollSession(Base):
     end = Column(Boolean, default=False)
     start_at = Column(DateTime)
 
-    rolls = relationship("Roll", back_populates="sessions")
 
 class Roll(Base):
     __tablename__ = "roll"

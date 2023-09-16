@@ -8,6 +8,7 @@ def get_roll_session(db: Session, roll_session_id: str):
 def get_roll_sessions(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.RollSession).offset(skip).limit(limit).all()
 
+
 def create_roll_session(db: Session, roll_session: schemas.CreateRollSession):
     db_roll_session = models.RollSession(
             end = roll_session.end,

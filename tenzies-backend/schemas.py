@@ -32,7 +32,6 @@ class ReadRollSession(BaseModel):
     id: int
     end: bool
     start_at: datetime
-    rolls: List[CreateRoll] = []
 
     class Config:
         orm_mode = True

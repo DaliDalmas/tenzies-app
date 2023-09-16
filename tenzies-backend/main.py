@@ -4,7 +4,22 @@ from sqlalchemy.orm import Session
 import crud, models, schemas
 from database import SessionLocal1, engine
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+    "localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*']
+)
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -22,6 +37,7 @@ def get_sessions(skip: int = 0, limit: int =100, db: Session = Depends(get_db)):
 
 @app.post("/sessions/", response_model=schemas.ReadRollSession, tags=["sessions"])
 def post_session(roll_session: schemas.CreateRollSession, db: Session = Depends(get_db)):
+    print("they called me")
     return crud.create_roll_session(db=db, roll_session=roll_session)
 
 @app.get("/session/{session_id}", response_model=schemas.ReadRollSession, tags=["sessions"])
